@@ -1,0 +1,24 @@
+# 1 "/home/terryjoy/project/InterviewPreparation/leetcode/124.cpp"
+# 1 "/home/terryjoy/project/InterviewPreparation/leetcode//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 1 "<command-line>" 2
+# 1 "/home/terryjoy/project/InterviewPreparation/leetcode/124.cpp"
+# 13 "/home/terryjoy/project/InterviewPreparation/leetcode/124.cpp"
+class Solution {
+public:
+    int maxPathSum(TreeNode* root) {
+        int ans = -1e9;
+        function<int(TreeNode*)> dfs = [&](TreeNode *root) {
+            if (!root)
+                return 0;
+            int left = max(dfs(root->left), 0);
+            int right = max(dfs(root->right), 0);
+            ans = max(ans, left + right + root->val);
+            return max(left, right) + root->val;
+        };
+        dfs(root);
+        return ans;
+    }
+};
