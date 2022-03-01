@@ -1,14 +1,16 @@
 #include<iostream>
+#include<cstdlib>
 #include "a.h"
 using namespace std;
+// typedef int* ii;
+#define ii int*
 void F() { 
-	#define N 15	
 }
 void F2() {
-	cout << N << "\n";
-	cout << m << '\n';
+	typedef long long ll;
+	cout << (ll)5;
 }
 int main() {
-	F2();
+	int * p = (int *)malloc(sizeof(int) * 5);
 	return 0;
 }

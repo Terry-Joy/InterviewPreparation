@@ -15,7 +15,7 @@ public:
     int maxPathSum(TreeNode* root) {
         int ans = -1e9;
         function<int(TreeNode*)> dfs = [&](TreeNode *root) {
-            if (!root)
+            if (!root)	
                 return 0;
             int left = max(dfs(root->left), 0);
             int right = max(dfs(root->right), 0);
