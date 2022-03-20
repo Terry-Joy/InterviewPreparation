@@ -1,14 +1,11 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-
+#include<bits/stdc++.h>
+using namespace std;
+const int maxn = 7e6 + 10;
+class A{
+	int a;
+	A() {}
+	void add() const {cout << a << endl;}
+};
 int main() {
-	pid_t pid = fork();
-	pid = fork();
-	if (!pid) {
-		printf("son");
-	} else if (pid > 0) {
-		sleep(100000000);
-		printf("fuqin");
-	}
+	A x();
 }

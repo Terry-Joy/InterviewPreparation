@@ -442,3 +442,43 @@ public:
   用一个哈希表存t字母出现次数，枚举右端点，左端点单调前进即可。注意要在合法的时候才能前进。
 
 牛客top101
+
+3.无重复字符的最长子串
+给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+枚举右端点，哈希表存某个字母最后出现的位置即可，发现重复就更新左端点位置。
+
+4.链表
+k个一组翻转链表
+主要的思想是先建立一个虚拟节点，每次查询的时候先往前k步看可不可行，如果可行的话，就得到fi往后k步的一个反转的三指针，分别是下一个反转后的头尾，和尾的下一个，调整指针后fi等于下一个的头，就变成子问题了，注意k等于1和节点为空的时候直接返回即可.
+
+4.寻找两个正序数组的中位数
+大无语题，我们可以转化成求两个有序数组的第k小问题，考虑奇数就是n/2 + 1, 偶数就是n/2, n/2 + 1，
+两个有序数组第k小问题可以二分思想来解决，注意边界情况，就是两边越界，还有k==1的时候，
+
+[0, k/2 - 1], [0, k/2 - 1];
+```cpp
+while (true) {
+	// 边界情况
+	if (index1 == length1) {
+		return nums2[index2 + k - 1];
+	}
+	if (index2 == length2) {
+		return nums1[index1 + k - 1];
+	}
+	if (k == 1) {
+		return Math.min(nums1[index1], nums2[index2]);
+	}
+	
+	// 正常情况
+	int half = k / 2;
+	int newIndex1 = Math.min(index1 + half, length1) - 1;
+	int newIndex2 = Math.min(index2 + half, length2) - 1;
+	int pivot1 = nums1[newIndex1], pivot2 = nums2[newIndex2];
+	if (pivot1 <= pivot2) {
+		k -= (newIndex1 - index1 + 1);
+		index1 = newIndex1 + 1;
+	} else {
+		k -= (newIndex2 - index2 + 1);
+		index2 = newIndex2 + 1;
+	}
+}
